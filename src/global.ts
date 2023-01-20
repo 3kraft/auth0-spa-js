@@ -256,6 +256,16 @@ export interface Auth0ClientOptions extends BaseLoginOptions {
    * **Note**: Using this improperly can potentially compromise the token validation.
    */
   nowProvider?: () => Promise<number> | number;
+
+  /**
+   * Optionally configures the path of authorization endpoint. Defaults to '/authorize'
+   */
+  tokenEndpoint?: string;
+
+  /**
+   * Optionally configures the path of the token endpoint. Defaults to '/token'.
+   */
+  authorizeEndpoint?: string;
 }
 
 /**
