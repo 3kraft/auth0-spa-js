@@ -115,6 +115,8 @@ export class Auth0Client {
   private readonly transactionManager: TransactionManager;
   private readonly cacheManager: CacheManager;
   private readonly domainUrl: string;
+  private readonly tokenEndpoint: string;
+  private readonly authorizeEndpoint: string;
   private readonly tokenIssuer: string;
   private readonly scope: string;
   private readonly cookieStorage: ClientStorage;
@@ -224,6 +226,9 @@ export class Auth0Client {
     this.domainUrl = getDomain(this.options.domain);
     this.tokenIssuer = getTokenIssuer(this.options.issuer, this.domainUrl);
 
+    this.tokenEndpoint = this.options.tokenEndpoint || '/token';
+    this.authorizeEndpoint = this.options.authorizeEndpoint || '/authorize';
+
     // Don't use web workers unless using refresh tokens in memory
     if (
       typeof window !== 'undefined' &&
@@ -243,7 +248,7 @@ export class Auth0Client {
   }
 
   private _authorizeUrl(authorizeOptions: AuthorizeOptions) {
-    return this._url(`/authorize?${createQueryParams(authorizeOptions)}`);
+    return this._url(`${this.authorizeEndpoint}?${createQueryParams(authorizeOptions)}`);
   }
 
   private async _verifyIdToken(
@@ -621,7 +626,7 @@ export class Auth0Client {
    *
    * If refresh tokens are used, the token endpoint is called directly with the
    * 'refresh_token' grant. If no refresh token is available to make this call,
-   * the SDK will only fall back to using an iframe to the '/authorize' URL if 
+   * the SDK will only fall back to using an iframe to the '/authorize' URL if
    * the `useRefreshTokensFallback` setting has been set to `true`. By default this
    * setting is `false`.
    *
@@ -1100,6 +1105,7 @@ export class Auth0Client {
     const authResult = await oauthToken(
       {
         baseUrl: this.domainUrl,
+        tokenEndpoint: this.tokenEndpoint,
         client_id: this.options.clientId,
         auth0Client: this.options.auth0Client,
         useFormData: this.options.useFormData,
