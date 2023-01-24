@@ -809,7 +809,7 @@ export class Auth0Client {
     const { federated, ...logoutOptions } = options.logoutParams || {};
     const federatedQuery = federated ? `&federated` : '';
     const url = this._url(
-      `/v2/logout?${createQueryParams({
+      `${options.logoutEndpoint || '/v2/logout'}?${createQueryParams({
         clientId: options.clientId,
         ...logoutOptions
       })}`

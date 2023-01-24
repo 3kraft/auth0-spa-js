@@ -435,6 +435,11 @@ export interface LogoutUrlOptions {
   clientId?: string | null;
 
   /**
+   * A custom logout endpoint path. Defaults to /v2/logout
+   */
+  logoutEndpoint?: string;
+
+  /**
    * Parameters to pass to the logout endpoint. This can be known parameters defined by Auth0 or custom parameters
    * you wish to provide.
    */
