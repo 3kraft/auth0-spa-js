@@ -226,7 +226,7 @@ export class Auth0Client {
     this.domainUrl = getDomain(this.options.domain);
     this.tokenIssuer = getTokenIssuer(this.options.issuer, this.domainUrl);
 
-    this.tokenEndpoint = this.options.tokenEndpoint || '/token';
+    this.tokenEndpoint = this.options.tokenEndpoint || '/oauth/token';
     this.authorizeEndpoint = this.options.authorizeEndpoint || '/authorize';
 
     // Don't use web workers unless using refresh tokens in memory
