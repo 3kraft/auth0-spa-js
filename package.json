@@ -90,12 +90,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/auth0/auth0-spa-js.git"
+    "url": "git://github.com/3kraft/auth0-spa-js.git"
   },
   "bugs": {
-    "url": "https://github.com/auth0/auth0-spa-js/issues"
+    "url": "https://github.com/3kraft/auth0-spa-js/issues"
   },
-  "homepage": "https://github.com/auth0/auth0-spa-js#readme",
+  "homepage": "https://github.com/3kraft/auth0-spa-js#readme",
   "keywords": [
     "auth0",
     "login",
