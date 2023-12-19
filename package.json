@@ -29,8 +29,7 @@
     "serve:stats": "serve bundle-stats -n",
     "print-bundle-size": "node ./scripts/print-bundle-size.mjs",
     "prepack": "npm run build && node ./scripts/prepack",
-    "publish:cdn": "ccu --trace",
-    "prepare": "npm run build"
+    "publish:cdn": "ccu --trace"
   },
   "devDependencies": {
     "@auth0/component-cdn-uploader": "github:auth0/component-cdn-uploader#v2.2.2",
